@@ -1,70 +1,52 @@
-import { useState } from 'react'
-import {When} from 'react-if';
+import React, { useState } from 'react';
+import SearchForm from './SearchForm';
+import LocationInfo from './LocationInfo';
+import ErrorMessage from './ErrorMessage';
 
-let accessToken = import.meta.env.VITE_LOCATION_API_KEY; // get from the .env file
-
-console.log("Access Token", accessToken);
 
 function App() {
-
-  const [city, setCity] = useState('')
+  const [city, setCity] = useState('');
   const [location, setLocation] = useState({});
+  const [error, setError] = useState('');
 
-  function handleNewCity(e) {
-    setCity(e.target.value);
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    getLocation();
-  }
-
-  /*
-Getting Location Information for lexington,ky
-https://us1.locationiq.com/v1/search?key=c4ba37684e44b9&q=lexington,ky&format=json
-  */
+  const accessToken = import.meta.env.VITE_LOCATION_ACCESS_TOKEN; 
 
   async function getLocation() {
-    // fetch the location information from the API
+    if (!city) {
+      setError("That's not a real city! Check the spelling!");
+      setLocation({});
+      return;
+    }
+
     let url = `https://us1.locationiq.com/v1/search?key=${accessToken}&q=${city}&format=json`;
     try {
       let response = await fetch(url);
       let jsonData = await response.json();
-      let locationData = jsonData[0];
-      setLocation(locationData);
+      if (jsonData.error) {
+        setError("That's not a real city! Check the spelling!");
+        setLocation({});
+      } else {
+        let locationData = jsonData[0];
+        setLocation(locationData);
+        setError('');
+      }
     } catch(error) {
       console.error("Error getting location information", error);
+      setError("Error getting location information");
     }
   }
 
-  console.log("LOCATION:",location);
-
-
-  // Condtionally render the location information
-
   return (
-    <>
-
-      <form onSubmit={handleSubmit}>
-        <input placeholder="Type a City Name" onChange={handleNewCity} />
-      </form>
-
-      {
-        location.display_name ?
-          <section>
-            <h4>Location Information For: {location.display_name}</h4>
-          </section>
-        : null
-      }
-
-      <When condition={location.lat && location.lon}>
-        <section>
-          <img src={`https://maps.locationiq.com/v3/staticmap?key=${accessToken}&center=${location.lat},${location.lon}&size=500x440&zoom=10`} />
-        </section>
-      </When>
-
-    </>
-  )
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <SearchForm setCity={setCity} getLocation={getLocation} />
+          {error && <ErrorMessage message={error} />}
+          {location.display_name && <LocationInfo location={location} accessToken={accessToken} />}
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
