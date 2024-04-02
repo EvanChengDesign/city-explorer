@@ -9,7 +9,7 @@ function App() {
   const [location, setLocation] = useState({});
   const [error, setError] = useState('');
 
-  const accessToken = import.meta.env.VITE_LOCATION_ACCESS_TOKEN; 
+  const accessToken = import.meta.env.VITE_LOCATION_API_KEY; 
 
   async function getLocation() {
     if (!city) {

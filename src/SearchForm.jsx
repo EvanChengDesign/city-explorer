@@ -1,5 +1,6 @@
 import React from 'react';
 
+// eslint-disable-next-line react/prop-types
 function SearchForm({ setCity, getLocation }) {
   function handleNewCity(e) {
     setCity(e.target.value);
