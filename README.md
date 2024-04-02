@@ -1,35 +1,91 @@
-# Project Name
+# City Explorer
 
-**Author**: Your Name Goes Here
-**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+**Author**: Evan Cheng
+**Version**: 1.0.0
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
+
+The City Explorer Application, a React-based project, utilizes the Axios library to fetch data on demand from a third-party API, catering to travelers and the curious. It aims to fill the informational void about global cities, enhancing the discovery process with comprehensive details for its users. Beyond presenting textual information, it integrates visual maps to enrich the exploration experience, making it more immersive and insightful. This application serves as a practical resource for travel planning, geographical education, or virtual global exploration.
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+
+1. Clone the Repository: Start by cloning the repository to your local machine. You can do this by running git clone in your terminal.
+
+2. Install Dependencies: Navigate to the cloned directory and run npm install to install the necessary dependencies for the application to run.
+
+3. Environment Variables: Create a .env file in the root of your project. You will need to obtain an API key from LocationIQ and add it to your .env file as VITE_LOCATION_ACCESS_TOKEN=<Your_LocationIQ_API_Key>.
+
+4. Start the Application: Run npm start to start the application. This will launch the application in your default web browser.
+
+5. Explore: Use the search functionality to explore cities and their detailed information including latitude, longitude, and a visual map.
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+
+React.js: A JavaScript library for building user interfaces, chosen for its efficiency and community support.  
+
+Bootstrap: Utilized for styling and responsive design, allowing for a clean and modern user interface.  
+
+LocationIQ API: Provides the geo-location data used to fetch and display information about the cities.
+  
+Vite: Serves as the build tool and development environment, known for its fast hot module replacement.
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
+04-01-2024 10:00PM EST - Initial project setup with React and Vite.
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+04-01-2024 10:45PM EST - Integrated LocationIQ API for geo-location data fetching.  
+
+04-02-2024 12:01 AM EST - Implemented Bootstrap for styling and responsive design.
+  
+04-02-2024 12:45 AM EST - Added error handling for city searches and environment variable setup for API keys.  
 
 ## Credit and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->  
+LocationIQ: Geo-location API that powers the primary functionality of this application.  
 
-## Time Estimates:
+LocationIQ Bootstrap Documentation: For references on implementing responsive design elements.  
 
-### 01 April 2024: 
+Bootstrap React Documentation: For best practices and guidance on React component structure.  
 
-Name of feature: ________________________________
+ChatGPT by OpenAI: For assistance in debugging, architectural decisions, and code optimization strategies.
 
-Estimate of time needed to complete: _____
+## Time Estimates
 
-Start time: _____
+### 01 April 2024
 
-Finish time: _____
+Name of Feature: Setup & Initial Configuration
 
-Actual time needed to complete: _____
+    Estimate of time needed to complete: 30 Minutes
+    Start time: 10:00PM EST
+
+    Finish time: 11:45PM EST
+
+    Actual time needed to complete: 1 Hour 45 Minutes
+
+Name of Feature: Integration with LocationIQ API
+
+    Estimate of time needed to complete: 45 Minutes
+    Start time: 10:45PM EST
+
+    Finish time: 11:15PM EST
+
+    Actual time needed to complete: 30 Minutes
+
+Name of Feature: Display City Information & Error Handling and User Feedback
+
+    Estimate of time needed to complete: 45 Minutes
+    Start time: 12:45 AM EST
+
+    Finish time: 01:30 AM EST
+
+    Actual time needed to complete: 45 Minutes
+
+Name of Feature: Styling with Bootstrap  
+
+    Estimate of time needed to complete: 45 Minutes  
+
+    Start time: 12:45 AM EST
+
+    Finish time: 01:30 AM EST
+
+    Actual time needed to complete: 45 Minutes  
+
+### 02 April 2024
