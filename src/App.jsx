@@ -1,33 +1,68 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {When} from 'react-if';
+
+let accessToken = import.meta.env.VITE_LOCATION_API_KEY; // get from the .env file
+
+console.log("Access Token", accessToken);
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [city, setCity] = useState('')
+  const [location, setLocation] = useState({});
+
+  function handleNewCity(e) {
+    setCity(e.target.value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    getLocation();
+  }
+
+  /*
+Getting Location Information for lexington,ky
+https://us1.locationiq.com/v1/search?key=c4ba37684e44b9&q=lexington,ky&format=json
+  */
+
+  async function getLocation() {
+    // fetch the location information from the API
+    let url = `https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${city}&format=json`;
+    try {
+      let response = await fetch(url);
+      let jsonData = await response.json();
+      let locationData = jsonData[0];
+      setLocation(locationData);
+    } catch(error) {
+      console.error("Error getting location information", error);
+    }
+  }
+
+  console.log("LOCATION:",location);
+
+
+  // Condtionally render the location information
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+      <form onSubmit={handleSubmit}>
+        <input placeholder="Type a City Name" onChange={handleNewCity} />
+      </form>
+
+      {
+        location.display_name ?
+          <section>
+            <h4>Location Information For: {location.display_name}</h4>
+          </section>
+        : null
+      }
+
+      <When condition={location.lat && location.lon}>
+        <section>
+          <img src={`https://maps.locationiq.com/v3/staticmap?key=${accessToken}&center=${location.lat},${location.lon}&size=500x440&zoom=10`} />
+        </section>
+      </When>
+
     </>
   )
 }
