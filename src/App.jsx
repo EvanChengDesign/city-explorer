@@ -26,7 +26,7 @@ https://us1.locationiq.com/v1/search?key=c4ba37684e44b9&q=lexington,ky&format=js
 
   async function getLocation() {
     // fetch the location information from the API
-    let url = `https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${city}&format=json`;
+    let url = `https://us1.locationiq.com/v1/search?key=${accessToken}&q=${city}&format=json`;
     try {
       let response = await fetch(url);
       let jsonData = await response.json();
