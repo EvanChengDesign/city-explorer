@@ -43,16 +43,21 @@ function App() {
     try {
       let response = await fetch(url);
       let jsonData = await response.json();
-      if (jsonData.error) {
+      console.log(jsonData);
+      console.log(jsonData[0]);
+      let locationData = jsonData[0];
+
+      if (locationData.error) {
         setError("That's not a real city! Check the spelling!");
         setLocation({});
         setWeatherData([]);
       } else {
-        let locationData = jsonData[0];
+        console.log(locationData);
         setLocation(locationData);
         setError('');
-        getWeather(locationData.lat, locationData.lon);
       }
+      getWeather(locationData.lat, locationData.lon);
+
     } catch(error) {
       console.error("Error getting location information", error);
       setError("Error getting location information");
