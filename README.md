@@ -47,9 +47,11 @@ Bootstrap React Documentation: For best practices and guidance on React componen
 
 ChatGPT by OpenAI: For assistance in debugging, architectural decisions, and code optimization strategies.
 
-## Time Estimates
+## Time Estimates & Lighthouse Score
 
 ### 01 April 2024
+
+![Lighthouse Score](/src/images/Lighthouse01APR2024.png)
 
 Name of Feature: Setup & Initial Configuration
 
@@ -89,3 +91,23 @@ Name of Feature: Styling with Bootstrap
     Actual time needed to complete: 45 Minutes  
 
 ### 02 April 2024
+
+![Lighthouse Score](/src/images/Lighthouse02APR2024.png)
+
+Name of Feature: Setup & Initial Configuration of Express Server
+
+    Estimate of time needed to complete: 45 Minutes
+    Start time: 3:30PM EST
+
+    Finish time: 5:00PM EST
+
+    Actual time needed to complete: 1 Hour 30 Minutes
+
+Name of Feature: Front End Weather Information From The Server
+
+    Estimate of time needed to complete: 1 Hour
+    Start time: 9:45PM EST
+
+    Finish time: 10:45PM EST
+
+    Actual time needed to complete: 1 Hour
