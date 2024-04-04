@@ -13,23 +13,24 @@ function App() {
   const [error, setError] = useState('');
 
   const accessToken = import.meta.env.VITE_LOCATION_API_KEY;
+  
 
 
   async function getWeather(lat, lon) {
-    let weatherUrl = `http://localhost:3000/weather?lat=${lat}&lon=${lon}&searchQuery=${city}`;
-    // try {
+    let weatherUrl = `http://localhost:3000/weather?city=${city}`;
+    console.log(weatherUrl);
+   
       let response = await fetch(weatherUrl);
       let jsonData = await response.json();
       if (response.ok) {
         setWeatherData(jsonData); 
+        console.log(jsonData);
+        console.log(jsonData.data[0].city);
         setError('');
       } else {
         setError('Failed to fetch weather data');
       }
-    // } catch(error) {
-    //   console.error("Error getting weather information", error);
-    //   setError("Error getting weather information");
-    // }
+
   }
 
   async function getLocation() {
@@ -52,7 +53,6 @@ function App() {
         setLocation({});
         setWeatherData([]);
       } else {
-        console.log(locationData);
         setLocation(locationData);
         setError('');
       }
