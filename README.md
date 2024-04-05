@@ -1,7 +1,7 @@
 # City Explorer
 
 **Author**: Evan Cheng
-**Version**: 1.0.0
+**Version**: 1.3.0
 
 ## Overview
 
@@ -29,7 +29,14 @@ LocationIQ API: Provides the geo-location data used to fetch and display informa
   
 Vite: Serves as the build tool and development environment, known for its fast hot module replacement.
 
+Axios: Used in React applications to make HTTP requests to external resources, such as APIs, enabling developers to easily fetch, post, and manage data from within their React components.
+
+WeatherbitIO API: Provides real time weather forecast data for locations.
+
+The Movie Database API: Provides movie information based off location data.
+
 ## Change Log
+
 04-01-2024 10:00PM EST - Initial project setup with React and Vite.
 
 04-01-2024 10:45PM EST - Integrated LocationIQ API for geo-location data fetching.  
@@ -38,7 +45,16 @@ Vite: Serves as the build tool and development environment, known for its fast h
   
 04-02-2024 12:45 AM EST - Added error handling for city searches and environment variable setup for API keys.  
 
+04-03-2024  - Integrate Weather API from back-end server.
+
+04-03-2024 - Debug Weather function to properly link front and back-end
+
+04-03-2024  - Implemented Movie API from back-end server
+  
+04-03-2024 - Added error handling for city searches, weather updates, and movie data.
+
 ## Credit and Collaborations
+
 LocationIQ: Geo-location API that powers the primary functionality of this application.  
 
 LocationIQ Bootstrap Documentation: For references on implementing responsive design elements.  
@@ -51,7 +67,7 @@ ChatGPT by OpenAI: For assistance in debugging, architectural decisions, and cod
 
 ### 01 April 2024
 
-![Lighthouse Score](/src/images/Lighthouse01APR2024.png)
+![Lighthouse Score](./src/images/Lighthouse01APR2024.png)
 
 Name of Feature: Setup & Initial Configuration
 
@@ -92,7 +108,7 @@ Name of Feature: Styling with Bootstrap
 
 ### 02 April 2024
 
-![Lighthouse Score](/src/images/Lighthouse02APR2024.png)
+![Lighthouse Score](./src/images/Lighthouse02APR2024.png)
 
 Name of Feature: Setup & Initial Configuration of Express Server
 
@@ -110,4 +126,26 @@ Name of Feature: Front End Weather Information From The Server
 
     Finish time: 10:45PM EST
 
-    Actual time needed to complete: 1 Hour
+    Actual time needed to complete: 1 Hour  
+
+### 03 April 2024
+
+![Lighthouse Score](./src/images/Lighthouse03APR2024.png.png)
+
+Name of Feature: Live Weather API from the Back-End Server
+
+    Estimate of time needed to complete: 1 Hour
+    Start time: 7:30PM EST
+
+    Finish time: 10:45PM EST
+
+    Actual time needed to complete: 3 Hour 15 Minutes
+
+Name of Feature: Movie API from the Back-End Server
+
+    Estimate of time needed to complete: 1 Hour
+    Start time: 11:00PM EST
+
+    Finish time: 11:30PM EST
+
+    Actual time needed to complete: 30 Minutes
