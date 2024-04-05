@@ -17,7 +17,7 @@ function App() {
   const accessToken = import.meta.env.VITE_LOCATION_API_KEY;
   
   async function getMovie(lat, lon) {
-    let movieUrl = `http://localhost:3000/movies?location=${city}`;
+    let movieUrl = `https://city-explorer-api-4bxx.onrender.com/movies?location=${city}`;
     console.log(movieUrl);
   
     try {
@@ -38,7 +38,7 @@ function App() {
   
 
   async function getWeather(lat, lon) {
-    let weatherUrl = `http://localhost:3000/weather?city=${city}`;
+    let weatherUrl = `https://city-explorer-api-4bxx.onrender.com/weather?city=${city}`;
     console.log(weatherUrl);
    
       let response = await fetch(weatherUrl);
