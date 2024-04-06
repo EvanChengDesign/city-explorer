@@ -18,10 +18,11 @@ function App() {
   const accessToken = import.meta.env.VITE_LOCATION_API_KEY;
   const Domain = import.meta.env.VITE_DOMAIN;
   
+  //${Domain}/movies?location=${city}`
   //https://city-explorer-api-4bxx.onrender.com//movies?location=${city} movieURL
 
   async function getMovie(lat, lon) {
-    let movieUrl = `${Domain}/movies?location=${city}`;
+    let movieUrl = `https://city-explorer-api-4bxx.onrender.com//movies?location=${city}`;
     console.log(movieUrl);
     try {
       let response = await fetch(movieUrl);
@@ -38,11 +39,11 @@ function App() {
       setError("Error fetching movie data");
     }
   }
-  
+  //${Domain}/weather?city=${city}`
   //https://city-explorer-api-4bxx.onrender.com/weather?city=${city} weatherURL 
 
   async function getWeather(lat, lon) {
-    let weatherUrl = `${Domain}/weather?city=${city}`;
+    let weatherUrl = `https://city-explorer-api-4bxx.onrender.com/weather?city=${city} weatherURL`;
     console.log(weatherUrl);
     try {
       let response = await fetch(weatherUrl);
