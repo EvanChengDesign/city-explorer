@@ -6,20 +6,23 @@ import Weather from './Weather';
 import Movies from './Movies.jsx'; 
 
 
-
 function App() {
   const [city, setCity] = useState('');
   const [location, setLocation] = useState({});
   const [weatherData, setWeatherData] = useState ([]);
-  const [movieData, setMovieData] = useState ([]);
+  //const [movieData, setMovieData] = useState ([]);
   const [error, setError] = useState('');
+  const [movieData, setMovieData] = useState({ movies: [], timestamp: '' });
+
 
   const accessToken = import.meta.env.VITE_LOCATION_API_KEY;
+  const Domain = import.meta.env.VITE_DOMAIN;
   
+  //https://city-explorer-api-4bxx.onrender.com//movies?location=${city} movieURL
+
   async function getMovie(lat, lon) {
-    let movieUrl = `https://city-explorer-api-4bxx.onrender.com/movies?location=${city}`;
+    let movieUrl = `${Domain}/movies?location=${city}`;
     console.log(movieUrl);
-  
     try {
       let response = await fetch(movieUrl);
       let jsonData = await response.json();
@@ -36,23 +39,27 @@ function App() {
     }
   }
   
+  //https://city-explorer-api-4bxx.onrender.com/weather?city=${city} weatherURL 
 
   async function getWeather(lat, lon) {
-    let weatherUrl = `https://city-explorer-api-4bxx.onrender.com/weather?city=${city}`;
+    let weatherUrl = `${Domain}/weather?city=${city}`;
     console.log(weatherUrl);
-   
+    try {
       let response = await fetch(weatherUrl);
       let jsonData = await response.json();
       if (response.ok) {
         setWeatherData(jsonData); 
         console.log(jsonData);
-        console.log(jsonData.data[0].city);
+        console.log(jsonData[0].weather.description);
         setError('');
       } else {
         setError('Failed to fetch weather data');
       }
-
-  }
+    } catch (error) {
+      console.error("Error fetching weather data:", error);
+      setError("Error fetching weather data");
+    }
+  } 
 
   async function getLocation() {
     if (!city) {
@@ -96,7 +103,7 @@ function App() {
           {error && <ErrorMessage message={error} />}
           {location.display_name && <LocationInfo location={location} accessToken={accessToken} />}
           {weatherData.length > 0 && <Weather forecasts={weatherData} />} 
-          {movieData.length > 0 && <Movies movies={movieData} />}
+          {movieData.movies && movieData.movies.length > 0 && <Movies movies={movieData.movies} />}
 
         </div>
       </div>
