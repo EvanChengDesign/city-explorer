@@ -22,7 +22,7 @@ function App() {
   //https://city-explorer-api-4bxx.onrender.com//movies?location=${city} movieURL
 
   async function getMovie(lat, lon) {
-    let movieUrl = `https://city-explorer-api-4bxx.onrender.com/movies?location=${city}`;
+    let movieUrl = `https://city-explorer-api-4bxx.onrender.com/movies?city=${city}`;
     console.log(movieUrl);
     try {
       let response = await fetch(movieUrl);
