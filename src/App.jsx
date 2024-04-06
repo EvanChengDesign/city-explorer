@@ -22,7 +22,7 @@ function App() {
   //https://city-explorer-api-4bxx.onrender.com//movies?location=${city} movieURL
 
   async function getMovie(lat, lon) {
-    let movieUrl = `https://city-explorer-api-4bxx.onrender.com//movies?location=${city}`;
+    let movieUrl = `https://city-explorer-api-4bxx.onrender.com//movies?city=${city}`;
     console.log(movieUrl);
     try {
       let response = await fetch(movieUrl);
@@ -43,7 +43,7 @@ function App() {
   //https://city-explorer-api-4bxx.onrender.com/weather?city=${city} weatherURL 
 
   async function getWeather(lat, lon) {
-    let weatherUrl = `https://city-explorer-api-4bxx.onrender.com/weather?city=${city} weatherURL`;
+    let weatherUrl = `https://city-explorer-api-4bxx.onrender.com/weather?city=${city}`;
     console.log(weatherUrl);
     try {
       let response = await fetch(weatherUrl);
