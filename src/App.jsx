@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import './App.css';
 import SearchForm from './SearchForm';
 import LocationInfo from './LocationInfo';
 import ErrorMessage from './ErrorMessage';
 import Weather from './Weather';
 import Movies from './Movies.jsx'; 
+
 
 
 function App() {
@@ -18,11 +20,12 @@ function App() {
   const accessToken = import.meta.env.VITE_LOCATION_API_KEY;
   const Domain = import.meta.env.VITE_DOMAIN;
   
-  //${Domain}/movies?location=${city}`
+  //${Domain}/movies?city=${city}`
   //https://city-explorer-api-4bxx.onrender.com//movies?location=${city} movieURL
 
   async function getMovie(lat, lon) {
     let movieUrl = `https://city-explorer-api-4bxx.onrender.com/movies?city=${city}`;
+    //let movieUrl = `${Domain}/movies?city=${city}`;
     console.log(movieUrl);
     try {
       let response = await fetch(movieUrl);
@@ -39,11 +42,12 @@ function App() {
       setError("Error fetching movie data");
     }
   }
-  //${Domain}/weather?city=${city}`
+  //${Domain}/weather?location=${city}`
   //https://city-explorer-api-4bxx.onrender.com/weather?city=${city} weatherURL 
 
   async function getWeather(lat, lon) {
     let weatherUrl = `https://city-explorer-api-4bxx.onrender.com/weather?city=${city}`;
+    //let weatherUrl = `${Domain}/weather?location=${city}`
     console.log(weatherUrl);
     try {
       let response = await fetch(weatherUrl);
